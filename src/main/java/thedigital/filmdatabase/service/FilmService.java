@@ -32,10 +32,10 @@ public class FilmService {
     }
 
     /** Get a single film by ID. */
-    public FilmDto getById(Long id) {
-        Film film = filmRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Film not found with id: " + id));
-        return toDto(film);
+    public FilmDto getByTitle(String title) {
+        return filmRepository.findByTitle(title)
+                .map(this::toDto)
+                .orElseThrow(() -> new RuntimeException("Film not found with title: " + title));
     }
 
     /** Update an existing film. */
@@ -77,13 +77,11 @@ public class FilmService {
 
     private FilmDto toDto(Film film) {
         return new FilmDto(
-                film.getId(),
                 film.getTitle(),
                 film.getDirector(),
                 film.getGenre(),
                 film.getRating(),
-                film.getReleaseDate()
-        );
+                film.getReleaseDate());
     }
 
     private Film toEntity(FilmDto dto) {

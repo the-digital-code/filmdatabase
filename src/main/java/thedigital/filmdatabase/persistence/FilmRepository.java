@@ -7,6 +7,7 @@ import thedigital.filmdatabase.model.Genre;
 import thedigital.filmdatabase.model.Rating;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface FilmRepository extends JpaRepository<Film, Long> {
@@ -16,4 +17,6 @@ public interface FilmRepository extends JpaRepository<Film, Long> {
     List<Film> findByRating(Rating rating);
 
     List<Film> findByTitleContainingIgnoreCase(String title);
+
+    Optional<Film> findByTitle(String title);
 }

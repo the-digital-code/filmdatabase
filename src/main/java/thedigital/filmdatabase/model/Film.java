@@ -1,40 +1,35 @@
 package thedigital.filmdatabase.model;
 
-import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
+import java.time.LocalDate;
 
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class Film {
 
-    // The Title of the film, such as action, comedy, drama, etc.
-    @Getter
-    @Setter
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    /** The title of the film, e.g., "Inception". */
     private String title;
 
-    // The director of the film.
-    @Getter
-    @Setter
+    /** The director of the film. */
     private String director;
 
-    // The Genre of the film, such as action, comedy, drama, etc.
-    @Getter
-    @Setter
+    /** The genre of the film. */
+    @Enumerated(EnumType.STRING)
     private Genre genre;
 
-    // The rating of the film, such as one star, two stars, three stars, four stars,
-    // or five stars.
-    @Getter
-    @Setter
+    /** The star rating of the film. */
+    @Enumerated(EnumType.STRING)
     private Rating rating;
 
-    // The release date of the film, in the format of "YYYY-MM-DD".
-    @Getter
-    @Setter
-    private String releaseDate;
+    /** The release date of the film. */
+    private LocalDate releaseDate;
 
 }

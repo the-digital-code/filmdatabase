@@ -1,9 +1,10 @@
 package thedigital.filmdatabase.model;
 
 public enum Rating {
-    one_star,
-    two_stars,
-    tree_stars,
-    four_stars,
-    five_stars
+    ONE_STAR,
+    TWO_STARS,
+    THREE_STARS,
+    FOUR_STARS,
+    FIVE_STARS;
+
 }

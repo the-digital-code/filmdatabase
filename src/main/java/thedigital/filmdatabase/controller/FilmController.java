@@ -55,7 +55,7 @@ public class FilmController {
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete a film", description = "Remove a film from the database by its id")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        filmService.delete(id));
+        filmService.delete(id);
         return ResponseEntity.noContent().build();
     }
 

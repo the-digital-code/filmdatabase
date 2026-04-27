@@ -50,9 +50,9 @@ public class FilmService {
         return toDto(filmRepository.save(film));
     }
 
-    /** Delete a film by title. */
-    public void delete(String title) {
-        filmRepository.deleteByTitle(title);
+    /** Delete a film its id. */
+    public void delete(Long id) {
+        filmRepository.deleteById(id);
     }
 
     /** Search films by genre. */

@@ -52,7 +52,12 @@ public class FilmController {
     }
 
     /** DELETE /api/films/{id} — delete a film */
-    
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Delete a film", description = "Remove a film from the database by its id")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        filmService.delete(id));
+        return ResponseEntity.noContent().build();
+    }
 
     /** GET /api/films/search?title=... — search by title keyword */
     @GetMapping("/search")

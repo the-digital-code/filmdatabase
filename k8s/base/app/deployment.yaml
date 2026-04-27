@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: filmdatabase-deployment
+  labels:
+    app: filmdatabase-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: filmdatabase-app
+  template:
+    metadata:
+      labels:
+        app: filmdatabase-app
+    spec:
+      containers:
+        - name: filmdatabase
+          image: digitalmustermann/filmdatabase-app:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080 

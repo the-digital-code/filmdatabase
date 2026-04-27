@@ -49,14 +49,15 @@ jobs:
           cache: 'maven'
           
       - name: run application
-        run: mvn spring-boot:run  
+        run: |
+          nohup mvn spring-boot:run > app.log 2>&1 & sleep 20 
 
 
 
   deploy:
     runs-on: ubuntu-latest
     needs: run
-    if: github.ref == 'refs/heads/main'
+
     steps:
       - name: Deploy
         run: echo "Deploying the application..."

@@ -53,9 +53,9 @@ public class FilmController {
 
     /** DELETE /api/films/{id} — delete a film */
     @DeleteMapping("/{id}")
-    @Operation(summary = "Delete a film", description = "Remove a film from the database by its ID")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        filmService.delete(id);
+    @Operation(summary = "Delete a film", description = "Remove a film from the database by its title")
+    public ResponseEntity<Void> delete(@PathVariable String title) {
+        filmService.delete(title));
         return ResponseEntity.noContent().build();
     }
 

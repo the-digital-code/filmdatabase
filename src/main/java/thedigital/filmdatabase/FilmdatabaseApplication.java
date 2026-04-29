@@ -6,6 +6,8 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
 @OpenAPIDefinition(
@@ -16,7 +18,12 @@ import org.springframework.context.annotation.Bean;
 		)
 )
 @SpringBootApplication
-public class FilmdatabaseApplication {
+public class FilmdatabaseApplication extends SpringBootServletInitializer {
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(FilmdatabaseApplication.class);
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(FilmdatabaseApplication.class, args);

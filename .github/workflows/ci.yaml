@@ -98,7 +98,7 @@ jobs:
           username: azureuser
           key: ${{ secrets.AZURE_VM_SSH_KEY }}
           source: "target/filmdatabase-0.0.1-SNAPSHOT.war"
-          target: "/opt/tomcat/webapps/"
+          target: "/home/azureuser/"
           strip_components: 1
 
       - name: Restart Tomcat Service
@@ -108,4 +108,5 @@ jobs:
           username: azureuser
           key: ${{ secrets.AZURE_VM_SSH_KEY }}
           script: |
+            sudo cp /home/azureuser/filmdatabase-0.0.1-SNAPSHOT.war /opt/tomcat/webapps/
             sudo systemctl restart tomcat10

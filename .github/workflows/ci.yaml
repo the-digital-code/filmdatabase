@@ -3,8 +3,6 @@ name: Film Database CI
 on: 
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs: 
   build:
@@ -94,7 +92,7 @@ jobs:
       - name: Copy WAR to Azure VM
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: 20.84.112.150
+          host: ${{ secrets.AZURE_VM_HOST }}
           username: azureuser
           key: ${{ secrets.AZURE_VM_SSH_KEY }}
           source: "target/filmdatabase-0.0.1-SNAPSHOT.war"
@@ -104,7 +102,7 @@ jobs:
       - name: Restart Tomcat Service
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: 20.84.112.150
+          host: ${{ secrets.AZURE_VM_HOST }}
           username: azureuser
           key: ${{ secrets.AZURE_VM_SSH_KEY }}
           script: |

@@ -106,5 +106,6 @@ jobs:
           username: azureuser
           key: ${{ secrets.AZURE_VM_SSH_KEY }}
           script: |
+            echo hello world
             sudo cp /home/azureuser/filmdatabase-0.0.1-SNAPSHOT.war /opt/tomcat/webapps/
             sudo systemctl restart tomcat10

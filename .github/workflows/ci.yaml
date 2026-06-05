@@ -72,7 +72,7 @@ jobs:
 
 
 
-  deploy:
+  <!-- deploy:
     runs-on: ubuntu-latest
     needs: run
 
@@ -108,4 +108,4 @@ jobs:
           script: |
             echo hello world
             sudo cp /home/azureuser/filmdatabase-0.0.1-SNAPSHOT.war /var/lib/tomcat10/webapps/
-            sudo systemctl restart tomcat10
+            sudo systemctl restart tomcat10 -->
